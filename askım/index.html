@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>ruh eşi bulma makinesi</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #880033;
+        color: #fff;
+      }
+
+      .container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .heart-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        display: none;
+      }
+
+      .heart {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        animation: heartbeat 1s infinite;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "taylan <3 aleyna";
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .heart::before {
+        top: -50px;
+        left: 0;
+      }
+
+      .heart::after {
+        left: 50px;
+        top: 0;
+      }
+
+      .form-control {
+        margin-top: 30px;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-size: 1.5rem;
+        color: #ffc107;
+      }
+
+      .img-container {
+        display: none;
+        margin-top: 20px;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.3);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>hayirli ve kısmetse olur makinesi</h1>
+      <input
+        type="text"
+        id="inputName"
+        class="form-control text-center"
+        placeholder="ruh eşinizi kontrol edeceğiniz ismi girin"
+      />
+      <div class="heart-container">
+        <div class="heart" style="margin-top: 50px"></div>
+      </div>
+      <p id="result"></p>
+
+      <div class="img-container">
+        <img src="img3131.jpg" alt="resim" class="img-fluid" />
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("inputName")
+        .addEventListener("input", function () {
+          const inputName = this.value.trim().toLowerCase();
+          const result = document.getElementById("result");
+          const heartContainer = document.querySelector(".heart-container");
+          const imgContainer = document.querySelector(".img-container");
+
+          if (inputName === "taylan") {
+            result.textContent = "ruh eşin: aleyna %100";
+            heartContainer.style.display = "flex";
+            imgContainer.style.display = "block";
+          } else if (inputName === "aleyna") {
+            result.textContent = "ruh eşin: taylan %100";
+            heartContainer.style.display = "flex";
+            imgContainer.style.display = "block";
+          } else if (inputName === "") {
+            result.textContent = "";
+            heartContainer.style.display = "none";
+            imgContainer.style.display = "none";
+          } else {
+            result.textContent =
+              "bu makine sadece gerçek aşıklar için çalışır.";
+            heartContainer.style.display = "none";
+            imgContainer.style.display = "none";
+          }
+        });
+    </script>
+  </body>
+</html>
